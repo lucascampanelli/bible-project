@@ -8,13 +8,12 @@ export default function Home(){
 
     const [passage, setPassage] = useState([]);
     const [books, setBooks] = useState([]);
-    const [selected, setSelected] = useState("");
-    const [chapters, setChapters] = useState(0);
-    const [options] = useState([]);
+    const [optionChapter] = useState([]);
 
     useEffect(() => {
         getText();
         getBooks();
+        getChapters("gn");
     }, []);
     
     async function getText(){
@@ -29,17 +28,21 @@ export default function Home(){
 
     const TextPassage = () => (
         passage.map(passage => (
-            <h3 key={passage.number}>{passage.number}{passage.text}</h3>
+            <h3 className='passage' key={passage.number}>{passage.number} {passage.text}</h3>
         ))
     );
     
     async function getChapters(book){
         const resChapter = await api.get("books/"+book);
-        setChapters(resChapter.data.chapters);
-        for(var i = 1; i <= chapters; i++){
-            options.push(<option value={i}>{i}</option>);
-        }
-        console.log(resChapter.data);
+        const select = document.getElementById("chapters");
+        select.innerHTML = '';
+        
+        Array.apply(null, Array(resChapter.data.chapters)).map(function (x, i) { 
+            var tag = document.createElement("option");
+            var text = document.createTextNode(i+1);
+            tag.appendChild(text);
+            select.appendChild(tag);
+        });
     }
 
     return(
@@ -48,16 +51,13 @@ export default function Home(){
                 <button className='buttonLeft'><FiChevronLeft className='Arrow'/></button>
 
                 <div>
-                    <select className='livros'>
+                    <select onChange={e => getChapters(e.target.options[e.target.selectedIndex].value)} className='livros'>
                         {books.map(books => (
-                                <option onClick={() => getChapters(books.abbrev.pt)} key={books} name={books.name}>{books.name}</option>
+                                <option value={books.abbrev.pt} key={books.name} name={books.name}>{books.name}</option>
                             ))
                         }
                     </select>
-                    <select className='chapters'>
-                        {
-                            options
-                        }
+                    <select id='chapters' className='chapters'>
                     </select>
                 </div>
 
