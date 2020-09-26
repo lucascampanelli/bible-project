@@ -8,17 +8,26 @@ export default function Home(){
 
     const [passage, setPassage] = useState([]);
     const [books, setBooks] = useState([]);
-    const [optionChapter] = useState([]);
+    const [currentBook, setCurrentBook] = useState("");
 
     useEffect(() => {
-        getText();
         getBooks();
         getChapters("gn");
     }, []);
     
-    async function getText(){
-        const books = await api.get("verses/nvi/jo/3");
-        setPassage(books.data.verses);
+    async function getText(book, chapter){
+        if(book && chapter){
+            const books = await api.get("verses/nvi/"+book+"/"+chapter);
+            setPassage(books.data.verses);
+            console.log(books);
+        }
+        else{
+            const books = await api.get("verses/nvi/"+book+"/1");
+            setPassage(books.data.verses);
+            console.log(books);
+        } 
+        console.log(book);
+        console.log(chapter);
     }
 
     async function getBooks(){
@@ -28,22 +37,28 @@ export default function Home(){
 
     const TextPassage = () => (
         passage.map(passage => (
-            <h3 className='passage' key={passage.number}>{passage.number} {passage.text}</h3>
+            <h3 className='passage' key={passage.number}><div class='verse'>{passage.number}</div> {passage.text}</h3>
         ))
     );
     
     async function getChapters(book){
         const resChapter = await api.get("books/"+book);
+        getText(book, "1");
+        setCurrentBook(book);
         const select = document.getElementById("chapters");
         select.innerHTML = '';
         
         Array.apply(null, Array(resChapter.data.chapters)).map(function (x, i) { 
             var tag = document.createElement("option");
+            const chapter = i+1;
             var text = document.createTextNode(i+1);
             tag.appendChild(text);
+            tag.value = i+1;
+            tag.id = "tag";
             select.appendChild(tag);
         });
     }
+
 
     return(
         <div>
@@ -57,7 +72,7 @@ export default function Home(){
                             ))
                         }
                     </select>
-                    <select id='chapters' className='chapters'>
+                    <select id='chapters' className='chapters' onChange={e => getText(currentBook, e.target.options[e.target.selectedIndex].value)}>
                     </select>
                 </div>
 

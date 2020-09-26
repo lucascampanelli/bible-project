@@ -1,38 +1,344 @@
-.Arrow{
-    color: black;
-    font-size: 3vh;
-}
+@media (min-width:0px) {
+    .verse{
+        font-size: 12px;
+        display: inline;
+    }
 
-.livros{
+    select{
+        background-color: white;
+        height: 30px;
+    }
     
+    .Arrow{
+        color: black;
+        font-size: 15px;
+    }
+    
+    button{
+        height: 5vh;
+        width: 10vh;
+        background-color: white;
+    }
+    
+    .buttons{
+        display:flex;
+        justify-content: space-between;
+        width: 100%;
+    }
+    
+    .buttonLeft{
+    }
+    
+    .buttonRight{
+    }
+    
+    .text{
+        margin-top: 20px;
+        padding: 0 20px;
+    }
+    
+    .passage{
+        font-family: 'IBM Plex Serif', serif;
+        margin-bottom: 14px;
+        font-size: 16px;
+        text-align: justify;
+    }
 }
 
-button{
-    height: 5vh;
-    width: 10vh;
-    background-color: white;
+@media (min-width:320px) { 
+    .verse{
+        font-size: 12px;
+        display: inline;
+    }
+
+    select{
+        background-color: white;
+        height: 30px;
+    }
+    
+    .Arrow{
+        color: black;
+        font-size: 20px;
+    }
+    
+    button{
+        height: 5vh;
+        width: 10vh;
+        background-color: white;
+    }
+    
+    .buttons{
+        display:flex;
+        justify-content: space-between;
+        width: 100%;
+    }
+    
+    .buttonLeft{
+    }
+    
+    .buttonRight{
+    }
+    
+    .text{
+        margin-top: 20px;
+        padding: 0 20px;
+    }
+    
+    .passage{
+        font-family: 'IBM Plex Serif', serif;
+        margin-bottom: 14px;
+        font-size: 18px;
+        text-align: justify;
+    }
 }
 
-.buttons{
-    padding: 0 3vh 3vh 3vh;
-    display:flex;
-    justify-content: space-between;
-    width: 100%;
+@media (min-width:480px) { 
+    .verse{
+        font-size: 12px;
+        display: inline;
+    }
+
+    select{
+        background-color: white;
+        height: 30px;
+    }
+    
+    .Arrow{
+        color: black;
+        font-size: 20px;
+    }
+    
+    button{
+        height: 5vh;
+        width: 10vh;
+        background-color: white;
+    }
+    
+    .buttons{
+        padding: 5px;
+        display:flex;
+        justify-content: space-between;
+        width: 100%;
+    }
+    
+    .buttonLeft{
+    }
+    
+    .buttonRight{
+    }
+    
+    .text{
+        margin-top: 20px;
+        padding: 0 20px;
+    }
+    
+    .passage{
+        font-family: 'IBM Plex Serif', serif;
+        margin-bottom: 14px;
+        font-size: 15px;
+        text-align: justify;
+    }    
 }
 
-.buttonLeft{
+@media (min-width:600px) { 
+    .verse{
+        font-size: 12px;
+        display: inline;
+    }
+
+    select{
+        background-color: white;
+        height: 30px;
+        font-size: 14px;
+    }
+    
+    .Arrow{
+        color: black;
+        font-size: 20px;
+    }
+    
+    button{
+        height: 5vh;
+        width: 10vh;
+        background-color: white;
+    }
+    
+    .buttons{
+        padding: 5px;
+        display:flex;
+        justify-content: space-between;
+        width: 100%;
+    }
+    
+    .buttonLeft{
+    }
+    
+    .buttonRight{
+    }
+    
+    .text{
+        margin-top: 20px;
+        padding: 0 20px;
+    }
+    
+    .passage{
+        font-family: 'IBM Plex Serif', serif;
+        margin-bottom: 14px;
+        font-size: 16px;
+        text-align: justify;
+    }    
 }
 
-.buttonRight{
+@media (min-width:801px) { 
+    .verse{
+        font-size: 12px;
+        display: inline;
+    }
+
+    select{
+        background-color: white;
+        font-size: 15px;
+    }
+
+    .Arrow{
+        color: black;
+        font-size: 20px;
+    }
+
+    .livros{
+        
+    }
+
+    button{
+        height: 5vh;
+        width: 10vh;
+        background-color: white;
+    }
+
+    .buttons{
+        padding: 5px;
+        display:flex;
+        justify-content: space-between;
+        width: 100%;
+    }
+
+    .buttonLeft{
+    }
+
+    .buttonRight{
+    }
+
+    .text{
+        margin-top: 20px;
+        padding: 0 60px;
+    }
+
+    .passage{
+        font-family: 'IBM Plex Serif', serif;
+        margin-bottom: 18px;
+        font-size: 17px;
+        text-align: justify;
+    }
 }
 
-.text{
-    padding: 0 20vh;
+@media (min-width:1025px) { 
+    .verse{
+        font-size: 12px;
+        display: inline;
+    }
+
+    select{
+        background-color: white;
+    }
+
+    .Arrow{
+        color: black;
+        font-size: 20px;
+    }
+
+    .livros{
+        
+    }
+
+    button{
+        height: 5vh;
+        width: 10vh;
+        background-color: white;
+    }
+
+    .buttons{
+        padding: 5px;
+        display:flex;
+        justify-content: space-between;
+        width: 100%;
+    }
+
+    .buttonLeft{
+    }
+
+    .buttonRight{
+    }
+
+    .text{
+        margin-top: 20px;
+        padding: 0 50px;
+    }
+
+    .passage{
+        font-family: 'IBM Plex Serif', serif;
+        margin-bottom: 15px;
+        font-size: 18px;
+        text-align: justify;
+    }
 }
 
-.passage{
-    font-family: Arial, Helvetica, sans-serif;
-    margin-bottom: 3vh;
-    font-size: 2.4vh;
-    text-align: justify;
+@media (min-width:1281px) { 
+    .verse{
+        font-size: 12px;
+        display: inline;
+    }
+
+    select{
+        background-color: white;
+    }
+    
+    .Arrow{
+        color: black;
+        font-size: 20px;
+    }
+    
+    .livros{
+        
+    }
+    
+    button{
+        height: 5vh;
+        width: 10vh;
+        background-color: white;
+    }
+    
+    .buttons{
+        padding: 5px;
+        display:flex;
+        justify-content: space-between;
+        width: 100%;
+    }
+    
+    .buttonLeft{
+    }
+    
+    .buttonRight{
+    }
+    
+    .text{
+        margin-top: 20px;
+        padding: 0 150px;
+    }
+    
+    .passage{
+        font-family: 'IBM Plex Serif', serif;
+        margin-bottom: 30px;
+        font-size: 18px;
+        text-align: justify;
+    }
 }
