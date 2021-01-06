@@ -9,6 +9,7 @@ export default function Home(){
     const [passage, setPassage] = useState([]);
     const [books, setBooks] = useState([]);
     const [currentBook, setCurrentBook] = useState("");
+    const [currentChapter, setCurrentChapter] = useState(1);
 
     useEffect(() => {
         getBooks();
@@ -17,12 +18,12 @@ export default function Home(){
     
     async function getText(book, chapter){
         if(book && chapter){
-            const books = await api.get("verses/nvi/"+book+"/"+chapter);
+            const books = await api.get("verses/acf/"+book+"/"+chapter);
             setPassage(books.data.verses);
             console.log(books);
         }
         else{
-            const books = await api.get("verses/nvi/"+book+"/1");
+            const books = await api.get("verses/acf/"+book+"/1");
             setPassage(books.data.verses);
             console.log(books);
         } 
@@ -57,13 +58,28 @@ export default function Home(){
             tag.id = "tag";
             select.appendChild(tag);
         });
+
+    }
+
+    async function nextChapter(){
+        const text = await api.get("books/"+currentBook);
+        getText(currentBook, currentChapter+1);
+        setCurrentChapter(currentChapter+1);
+    }
+
+    async function previousChapter(){
+        const text = await api.get("books/"+currentBook);
+        if(currentChapter > 1){
+            getText(currentBook, currentChapter-1);
+            setCurrentChapter(currentChapter-1);
+        }
     }
 
 
     return(
         <div>
             <section className='buttons'>
-                <button className='buttonLeft'><FiChevronLeft className='Arrow'/></button>
+                <button onClick={() => previousChapter()} className='buttonLeft'><FiChevronLeft className='Arrow'/></button>
 
                 <div>
                     <select onChange={e => getChapters(e.target.options[e.target.selectedIndex].value)} className='livros'>
@@ -72,11 +88,11 @@ export default function Home(){
                             ))
                         }
                     </select>
-                    <select id='chapters' className='chapters' onChange={e => getText(currentBook, e.target.options[e.target.selectedIndex].value)}>
+                    <select id='chapters' className='chapters' onChange={e => {getText(currentBook, e.target.options[e.target.selectedIndex].value); setCurrentChapter(e.target.options[e.target.selectedIndex].value)}}>
                     </select>
                 </div>
 
-                <button className='buttonRight'><FiChevronRight className='Arrow'/></button>
+                <button onClick={() => nextChapter()} className='buttonRight'><FiChevronRight className='Arrow'/></button>
             </section>
             <main className='text'>
                 <TextPassage/>
